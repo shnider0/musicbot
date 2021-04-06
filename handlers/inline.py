@@ -1,3 +1,6 @@
+"""
+Written by @pokurt.
+"""
 from pyrogram import Client, errors
 from pyrogram.types import InlineQuery, InlineQueryResultArticle, InputTextMessageContent
 
@@ -5,7 +8,7 @@ from youtubesearchpython import VideosSearch
 
 
 @Client.on_inline_query()
-async def inline(client: Client, query: InlineQuery):
+async def search(client: Client, query: InlineQuery):
     answers = []
     search_query = query.query.lower().strip().rstrip()
 
@@ -18,22 +21,22 @@ async def inline(client: Client, query: InlineQuery):
             cache_time=0
         )
     else:
-        search = VideosSearch(search_query, limit=50)
+        videosSearch = VideosSearch(search_query, limit=50)
 
-        for result in search.result()["result"]:
+        for v in videosSearch.result()["result"]:
             answers.append(
                 InlineQueryResultArticle(
-                    title=result["title"],
+                    title=v["title"],
                     description="{}, {} views.".format(
-                        result["duration"],
-                        result["viewCount"]["short"]
+                        v["duration"],
+                        v["viewCount"]["short"]
                     ),
                     input_message_content=InputTextMessageContent(
                         "https://www.youtube.com/watch?v={}".format(
-                            result["id"]
+                            v["id"]
                         )
                     ),
-                    thumb_url=result["thumbnails"][0]["url"]
+                    thumb_url=v["thumbnails"][0]["url"]
                 )
             )
 
