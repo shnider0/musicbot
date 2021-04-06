@@ -8,7 +8,7 @@ from helpers.filters import other_filters2
 @Client.on_message(other_filters2)
 async def start(_, message: Message):
     await message.reply_text(
-        f"""I am **{bn}** !!
+        f"""I am **{update.effective_user.first_name}** !!
 اهلا بك في بوت الموسيقى 
 😉
 
@@ -19,8 +19,7 @@ async def start(_, message: Message):
 ⚜️ /resume - __استئناف الموسقى .__
 ⚜️ /skip - __الانتقال الى اللموسقى التالية.__
 ⚜️ /stop - __توقف الموسيقى.__
-        يمكنك ايضا مراسلة المطور وطلب نسختك الخاصة من البوت 
-        """,
+        يمكنك ايضا مراسلة المطور وطلب نسختك الخاصة من البوت """,
         reply_markup=InlineKeyboardMarkup(
             [
                 [
@@ -28,7 +27,7 @@ async def start(_, message: Message):
                         "كروب المطور  💬", url="https://t.me/BOT_MUSIC_IQ"
                     ),
                     InlineKeyboardButton(
-                        "قناة المطور  📣", url="https://t.me/BOTS_MUSIC_IQ "
+                        "قناة المطور  📣", url="https://t.me/BOTS_MUSIC_IQ"
                     )
                     
                 ]
