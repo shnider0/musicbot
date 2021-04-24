@@ -42,32 +42,6 @@ from config import DURATION_LIMIT
 from helpers.errors import DurationLimitError
 
 
-@Client.on_message(
-    filters.command("start")
-    & filters.group
-    & ~ filters.edited
-)
-async def start(client: Client, message: Message):
-    await message.reply_text(
-        "💁🏻‍♂️ Do you want to search for a YouTube video?",
-        reply_markup=InlineKeyboardMarkup(
-            [
-                [
-                    InlineKeyboardButton(
-                        "✅ Yes", switch_inline_query_current_chat=""
-                    ),
-                    InlineKeyboardButton(
-                        "No ❌", callback_data="close"
-                    )
-                ]
-            ]
-        )
-    )
-
-
-
-
-
 chat_id = None
 @Client.on_message(
     filters.command("song")
@@ -75,6 +49,7 @@ chat_id = None
     & ~ filters.edited
 )
 @errors
+@admins_only
 async def play(client: Client, message_: Message):
     audio = (message_.reply_to_message.audio or message_.reply_to_message.voice) if message_.reply_to_message else None
     chat_id=message_.chat.id
@@ -136,6 +111,7 @@ async def play(client: Client, message_: Message):
     & filters.group
     & ~ filters.edited
 )
+@admins_only
 async def deezer(client: Client, message_: Message):
     requested_by = message_.from_user.first_name
     text = message_.text.split(" ", 1)
@@ -178,6 +154,7 @@ async def deezer(client: Client, message_: Message):
     & filters.group
     & ~ filters.edited
 )
+@admins_only
 async def jiosaavn(client: Client, message_: Message):
     requested_by = message_.from_user.first_name
     chat_id=message_.chat.id
@@ -234,6 +211,7 @@ def changeImageSize(maxWidth, maxHeight, image):
     & filters.group
     & ~ filters.edited
 )
+@admins_only
 async def ytp(client: Client, message_: Message):
     requested_by = message_.from_user.first_name
     chat_id=message_.chat.id
@@ -428,3 +406,30 @@ async def admincache(client, message: Message):
 )
 async def helper(client , message:Message):
      await message.reply_text("The commands and there use is explained here-: \n `/saavn` To search song on jio saavan and play the first result \n `/deezer` To search the song on deezer and get good quality stream \n `/song` To search the song on Youtube and play the first matching result \n '/play` Reply this in response to a link or any telegram audio file it will be played \n `/skip` to skip current song \n `/stop or /kill` to stop the streaming of song \n `/pause` to pause the stream \n `/resume` to resume the playback. \n Inline search is also supported.")
+
+
+
+@Client.on_message(
+    filters.command("start")
+    & filters.group
+    & ~ filters.edited
+)
+@admins_only
+async def start(client: Client, message: Message):
+    await message.reply_text(
+        "💁🏻‍♂️ Do you want to search for a YouTube video?",
+        reply_markup=InlineKeyboardMarkup(
+            [
+                [
+                    InlineKeyboardButton(
+                        "✅ Yes", switch_inline_query_current_chat=""
+                    ),
+                    InlineKeyboardButton(
+                        "No ❌", callback_data="close"
+                    )
+                ]
+            ]
+        )
+    )
+
+
