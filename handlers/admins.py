@@ -1,3 +1,5 @@
+
+from __future__ import unicode_literals
 from pyrogram import Client, filters
 from pyrogram.types import Message
 import tgcalls
@@ -13,7 +15,6 @@ from pyrogram.types import InlineQuery, InlineQueryResultArticle, InputTextMessa
 from youtubesearchpython import VideosSearch
 
 
-from __future__ import unicode_literals
 from pyrogram.types import (
     Message,
     InlineKeyboardButton,
