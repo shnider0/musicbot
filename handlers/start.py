@@ -12,7 +12,7 @@ async def start_(client: Client, message: Message):
     await message.reply_text(
         f"""<b>حبيبي 🥳 {message.from_user.first_name}!
  IQMUSICBOTS 
- @C5C5C5 
+ @NNN2B 
 
  </b>""",
       
@@ -26,15 +26,15 @@ async def start_(client: Client, message: Message):
                 ],
                 [
                     InlineKeyboardButton(
-                        "👥 Group", url="https://t.me/BOT_MUSIC_IQ"
+                        "👥 Group", url="https://t.me/NNN2B"
                     ),
                     InlineKeyboardButton(
-                        "💾 Source code", url="https://t.me/BOTS_MUSIC_IQ"
+                        "💾 Source code", url="https://t.me/NNN2B"
                     )
                 ],
                 [
                     InlineKeyboardButton(
-                        "Join ChatGroup", url="https://t.me/BOTS_MUSIC_IQ"
+                        "Join ChatGroup", url="https://t.me/NNN2B"
                     )
                 ]
             ]
