@@ -72,7 +72,7 @@ async def skip(client: Client, message: Message):
 
 
 @Client.on_message(
-    filters.command("admincache")
+    filters.command("admin")
 )
 @errors
 @admins_only
